@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+##
+##  Usage: ip
+##    Display external IP using OpenDNS.
+##
+
+dig +short myip.opendns.com @resolver1.opendns.com
+
+# REFERENCES
+# http://www.commandlinefu.com/commands/view/5253/get-your-outgoing-ip-address
+
