@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+diskutil erasevolume HFS+ "${2:-R}" \
+  `hdiutil attach -nomount ram://$((${1:-1}*2048))`
