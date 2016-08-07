@@ -1,0 +1,3 @@
+[submodule "lib/ssh-ident"]
+  path = lib/ssh-ident
+  url = https://github.com/ccontavalli/ssh-ident.git
