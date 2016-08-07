@@ -1,0 +1,59 @@
+
+def configure_aws_profile(aws, config)
+  aws_dir = ENV['AWS_DIR'] || '/Volumes/keys/aws'
+  if File.directory?(aws_dir)
+    aws_profile = ENV['AWS_PROFILE']
+    aws_profile_path = "#{aws_dir}/#{aws_profile}"
+
+    aws.aws_dir = aws_dir
+    aws.aws_profile = aws_profile
+    aws.keypair_name = aws_profile
+    config.ssh.private_key_path = "#{aws_profile_path}/ssh/#{aws_profile}"
+  end
+end
+
+def configure_digital_ocean_profile(ocean, config)
+  ocean_dir = ENV['XDG_CONFIG_HOME'] || '/Volumes/keys/digital_ocean'
+  if File.directory?(ocean_dir)
+    require 'yaml'
+    c = YAML.load_file "#{ocean_dir}/config.yaml"
+
+    ocean.token = c['access-token']
+    config.ssh.private_key_path = c['compute.ssh.ssh-key-path']
+  end
+end
+
+def configure_caching(config)
+  if Vagrant.has_plugin?('vagrant-cachier')
+    config.cache.auto_detect = false
+    config.cache.scope = :box
+
+    config.cache.enable :apt
+    config.cache.enable :apt_lists
+    config.cache.enable :npm
+    config.cache.enable :gem
+    config.cache.enable :generic, { :cache_dir => '/var/downloads' }
+  end
+end
+
+Vagrant.configure('2') do |config|
+
+  config.vm.provider :virtualbox do |vbox, config|
+    configure_caching(config)
+  end
+
+  config.vm.provider :aws do |aws, config|
+    config.vm.box = 'dummy'
+    config.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
+
+    configure_aws_profile(aws, config)
+  end
+
+  config.vm.provider :digital_ocean do |ocean, config|
+    config.vm.box = 'digital_ocean'
+    config.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+
+    configure_digital_ocean_profile(ocean, config)
+  end
+
+end
