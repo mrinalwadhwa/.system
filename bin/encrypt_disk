@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+
+disk="$1"
+read -s passphrase
+
+echo "$passphrase" | diskutil coreStorage convert "$disk" -stdinpassphrase
