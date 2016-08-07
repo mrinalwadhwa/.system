@@ -45,6 +45,11 @@ rm -f ".tm_properties"
 ln -s "${HOME}/.system/dotfiles/.tm_properties"
 
 
+# -- Programming Languages --
+
+git clone https://github.com/riywo/anyenv ~/.anyenv
+
+
 # --------- Networking ---------
 
 brew cask install nmap
