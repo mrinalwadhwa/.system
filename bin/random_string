@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+##
+##  Usage: random-string [length] [lines] [pattern]
+##    Generates a random string using /dev/urandom
+##
+##  Default:
+##    length: 32
+##     lines: 1
+##   pattern: 'a-zA-Z0-9'
+##
+##  Examples:
+##    > random-string
+##    qW8uYmDZ3Z3Yv811HuZlketieWpCLWtW
+##
+##    > random_string 40 3
+##    HXR5yc32y01dfE3Db60X1g43qgYaZNdizcYOX8N4
+##    jQTKKdgPti1pOpkwsxzKG0wxQkKV1WWp0QAkd3kv
+##    grpLs2CO8X5g741BCWY7JPAs3EwSOodYXLZeezTY
+##
+##    > random_string 40 1 'a-z'
+##    ejobgsixxrwhgigwmccryezbzisgwvprrzxflwce
+##
+##    > random_string 40 1 '0-9'
+##    4576764404246601394987469772076603834655
+##
+
+LC_CTYPE=C tr -dc "${3:-'a-zA-Z0-9'}" < /dev/urandom \
+  | fold -w "${1:-32}" \
+  | head -n "${2:-1}"
+
+# REFERENCES
+#  http://www.2uo.de/myths-about-urandom/
+#  http://stackoverflow.com/questions/101362/how-do-you-generate-passwords
+#  https://gist.github.com/earthgecko/3089509
+
