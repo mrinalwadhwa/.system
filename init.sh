@@ -49,8 +49,11 @@ ln -s "${HOME}/.system/dotfiles/.tm_properties"
 
 brew install git
 
-rm -f ".gitconfig"
-ln -s "${HOME}/.system/dotfiles/.gitconfig"
+rm -f "${HOME}/.gitconfig"
+cat << EOF > ${HOME}/.gitconfig
+[include]
+  path = ~/.system/dotfiles/.gitconfig
+EOF
 
 rm -f ".gitignore"
 ln -s "${HOME}/.system/dotfiles/.gitignore"
