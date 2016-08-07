@@ -1,0 +1,13 @@
+*~
+._*
+*.log
+
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+.vagrant
+
+node_modules
+npm-debug.log
+.sass-cache
