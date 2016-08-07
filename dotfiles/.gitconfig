@@ -1,6 +1,3 @@
-[include]
-  path = ~/.gituser
-
 [core]
   # Use custom `.gitignore`
   excludesfile = ~/.gitignore

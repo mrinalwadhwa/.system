@@ -45,9 +45,20 @@ rm -f ".tm_properties"
 ln -s "${HOME}/.system/dotfiles/.tm_properties"
 
 
+# ---- Version Control ------
+
+brew install git
+
+rm -f ".gitconfig"
+ln -s "${HOME}/.system/dotfiles/.gitconfig"
+
+rm -f ".gitignore"
+ln -s "${HOME}/.system/dotfiles/.gitignore"
+
+
 # -- Programming Languages --
 
-git clone https://github.com/riywo/anyenv ~/.anyenv
+git clone https://github.com/riywo/anyenv "${HOME}/.anyenv"
 
 
 # --------- Networking ---------

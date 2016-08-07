@@ -12,3 +12,5 @@ for file in $HOME/.system/profile.d/*; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
+
+[ -r "$HOME/.extra" ] && [ -f "$HOME/.extra" ] && source "$HOME/.extra"
