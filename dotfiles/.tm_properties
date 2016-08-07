@@ -1,0 +1,25 @@
+
+encoding = UTF-8
+
+fontName = "Source Code Pro"
+fontSize = 15
+
+showInvisibles = true
+
+softTabs = true
+tabSize = 2
+
+softWrap = true
+wrapColumn = 80
+lineEndings = '\n'
+
+spellChecking = false
+
+include = '{$include,.*}'
+excludeDirectories = '{$excludeDirectories,.git}'
+
+[ Makefile ]
+softTabs = false
+
+[ .editorconfig ]
+fileType = "source.makefile"
