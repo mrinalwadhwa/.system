@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+echo -e "\n\n=+=+ $(date +%Y-%m-%dT%H:%M:%S%z) +=+=" | tee /dev/stderr
+
+source "$HOME/.bashrc"
+
+echo -e "\nUpdating Homebrew ...\n"
+brew outdated
+brew update && brew upgrade --all && brew cleanup && brew cask cleanup
+
+echo -e "\n\nUpdating anyenv envs ...\n"
+anyenv update
+
+echo -e "\n\nUpdating pip packages ...\n"
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+
+echo -e "\n\nUpdating gems ...\n"
+gem update --system
+
+echo -e "\n\nUpdating npm packages ...\n"
+npm outdated --global --depth=0
+npm update --global
+
+echo -e "=+=++=+=" | tee /dev/stderr
