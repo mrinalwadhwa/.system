@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+##
+##  Usage: usage [command|path]
+##    Assuming that a command script file starts with a block of usage info
+##    where each line in the block starts with two '##' characters. This script
+##    extracts and displays that block of usage info.
+##
+##  Example:
+##    Given a file a_command with the following contents:
+##
+##    #!/usr/bin/env bash
+##    ##
+##    ##  Usage: a_command <args>
+##    ##    This is a_command
+##    ##
+##
+##    > usage ~/bin/a_command
+##
+##      Usage: a_command <args>
+##        This is a_command
+##      ...
+##
+##    If the command a_command is in PATH
+##    > usage a_command
+##
+##      Usage: a_command <args>
+##        This is a_command
+##      ...
+##
+
+if [ $# -ne 0 ]; then
+  grep "^##" "$(which "$1")" | sed "s/^##//"
+else
+  exit 1
+fi
+
