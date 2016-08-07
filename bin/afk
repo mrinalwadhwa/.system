@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+##
+##  Usage: afk
+##    Lock Screen on MacOS
+##
+
+/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend
