@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+sudo lsof -i -P | grep -i "listen"
+
+# REFERENCES
+# http://apple.stackexchange.com/a/117648
