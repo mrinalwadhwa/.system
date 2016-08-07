@@ -19,5 +19,10 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   chsh -s /usr/local/bin/bash;
 fi;
 
+brew tap caskroom/cask
+
+brew cask install atom
+brew cask install textmate
+
 # Remove outdated versions from the cellar.
 brew cleanup
