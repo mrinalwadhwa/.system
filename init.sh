@@ -74,6 +74,7 @@ brew cask install nmap
 brew install qrencode
 brew install zbar
 
+
 # --------- Virtualization ---------
 
 brew cask install virtualbox
@@ -83,6 +84,11 @@ source "${HOME}/.system/profile.d/vagrant.sh"
 mkdir -p "$VAGRANT_HOME"
 cp "$HOME/.system/dotfiles/.vagrant.d/Vagrantfile" "$VAGRANT_HOME/Vagrantfile"
 
+
+# --------- Auto Upgrade ---------
+
+cp "$HOME/.system/files/LaunchAgents/io.mrinal.upgrade.plist" "$HOME/Library/LaunchAgents/"
+launchctl load "$HOME/Library/LaunchAgents/io.mrinal.upgrade.plist"
 
 # ----------------------------------
 
