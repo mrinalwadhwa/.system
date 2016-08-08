@@ -69,6 +69,11 @@ git clone https://github.com/riywo/anyenv "${HOME}/.anyenv"
 brew cask install nmap
 
 
+# --------- Images ---------
+
+brew install qrencode
+brew install zbar
+
 # --------- Virtualization ---------
 
 brew cask install virtualbox
