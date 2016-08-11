@@ -73,7 +73,7 @@ brew cask install nmap
 
 brew install qrencode
 brew install zbar
-
+brew cask install sketch
 
 # --------- Virtualization ---------
 
