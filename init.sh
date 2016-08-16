@@ -37,6 +37,7 @@ ln -s "${HOME}/.system/dotfiles/.bash_profile"
 
 brew cask install atom
 brew cask install textmate
+brew install vim --with-override-system-vi --with-python3
 
 rm -f ".editorconfig"
 ln -s "${HOME}/.system/dotfiles/.editorconfig"
@@ -44,6 +45,10 @@ ln -s "${HOME}/.system/dotfiles/.editorconfig"
 rm -f ".tm_properties"
 ln -s "${HOME}/.system/dotfiles/.tm_properties"
 
+git clone https://github.com/VundleVim/Vundle.vim.git "${HOME}/.vim/bundle/Vundle.vim"
+rm -f ".vimrc"
+ln -s "${HOME}/.system/dotfiles/.vimrc"
+cp "${HOME}/.vim/bundle/vim-colors-solarized/colors/solarized.vim" "${HOME}/.vim/colors/"
 
 # ---- Version Control ------
 
